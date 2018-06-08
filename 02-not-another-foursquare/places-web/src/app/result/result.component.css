@@ -1,0 +1,12 @@
+.row, #map, #details {
+  height: 100%;
+}
+
+#details {
+  padding-top: 15px;
+  padding-right: 15px;
+  -moz-box-shadow:    inset 7px 0 9px -7px rgba(0,0,0,0.7);
+  -webkit-box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.7);
+  box-shadow:         inset 7px 0 9px -7px rgba(0,0,0,0.7);
+  overflow: scroll;
+}
