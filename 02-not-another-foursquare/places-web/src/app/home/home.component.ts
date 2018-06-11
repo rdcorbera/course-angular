@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlaceService } from '../services/place.service';
+import { Place } from '../models/place';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  placesByDay: Place[];
+  placesByWeek: Place[];
+
+  constructor(private placeService: PlaceService) { }
 
   ngOnInit() {
+    this.placesByDay = this.placeService.listPopularByDay();
+    this.placesByWeek = this.placeService.listPopularByWeek();
   }
-
 }
