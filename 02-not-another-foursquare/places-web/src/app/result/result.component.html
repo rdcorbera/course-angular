@@ -6,7 +6,7 @@
         <h5 class="card-title">{{place.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{place.address}}</h6>
         <p class="card-text">{{place.description}}</p>
-        <a href="#" class="card-link" routerLink="/detail">Details</a>
+        <a href="#" class="card-link" [routerLink]="['/detail', place.id]">Details</a>
         <a href="#" class="card-link">Reserve</a>
       </div>
     </div>

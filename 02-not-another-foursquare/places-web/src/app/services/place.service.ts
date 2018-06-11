@@ -37,4 +37,8 @@ export class PlaceService {
   public listByCategory(category: string) {
     return this.places;
   }
+
+  public getById(id: number): Place {
+    return this.places.find(place => place.id === id);
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Place } from '../models/place';
+import { PlaceService } from '../services/place.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  place: Place;
+
+  constructor(private route: ActivatedRoute, private placeService: PlaceService) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const placeId = Number.parseInt(params.get('id'));
+      this.place = this.placeService.getById(placeId);
+    });
   }
-
 }

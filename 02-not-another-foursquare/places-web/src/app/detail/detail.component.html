@@ -4,36 +4,23 @@
       <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
     </div>
     <div class="col-lg-4">
-      <h1>Place name</h1>
-      <p>Place address</p>
+      <h1>{{place.name}}</h1>
+      <p>{{place.address}}</p>
       <p>
-        This is a template that is great for small businesses. 
-        It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. 
-        Feel free to use this template for any project you want!
+        {{place.description}}
       </p>
     </div>
   </div>
   <h3 class="title">Comments</h3>
-  <div class="card comment">
+  <div *ngFor="let comment of place.comments" class="card comment">
     <div class="card-header">
-      Title comment
+      {{comment.title}}
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous guy at 06/22/2018 15:32</footer>
+        <p>{{comment.content}}</p>
+        <footer class="blockquote-footer">{{comment.username}} at {{comment.registerAt | date}}</footer>
       </blockquote>
     </div>
   </div>
-  <div class="card comment">
-      <div class="card-header">
-        Another title comment
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer class="blockquote-footer">Someone famous guy at 06/22/2018 15:32</footer>
-        </blockquote>
-      </div>
-    </div>
 </div>
