@@ -1,6 +1,7 @@
 import { Person } from './person';
 import { Snake } from './snake';
 import { CustomNumber, StringNumber } from './generic-number';
+import { Developer } from './decorators/classdecorator';
 
 const person = new Person(12345678, 'Mike', 28);
 person.sayHello();
@@ -18,3 +19,7 @@ console.log(numericAdd.add(1,2));
 
 const stringAdd = new StringNumber();
 console.log(stringAdd.add("1", "2"));
+
+
+const dev = new Developer();
+dev.hello();
