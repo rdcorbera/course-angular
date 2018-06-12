@@ -4,6 +4,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL);
 const Place = require('./models/place');
 const Tag = require('./models/tag');
 const PlaceTag = require('./models/place-tag');
+const Comment = require('./models/comment');
 
 module.exports = {
   init: () => {
@@ -16,6 +17,7 @@ module.exports = {
           Place.sync({ force: true }),
           Tag.sync({ force: true }),
           PlaceTag.sync({ force: true }),
+          Comment.sync({ force: true }),
         ]).then(() => {
           Place.create({ 
             name: 'Shimaya', 
@@ -26,6 +28,8 @@ module.exports = {
           }).then(place => {
             PlaceTag.create({ placeId: place.id, name: 'restaurante', });
             PlaceTag.create({ placeId: place.id, name: 'ramen', });
+            Comment.create({ placeId: place.id, username: 'userone', title: 'Comment 01', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
+            Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           Place.create({ 
             name: 'Katana', 
@@ -37,6 +41,8 @@ module.exports = {
             PlaceTag.create({ placeId: place.id, name: 'restaurante', });
             PlaceTag.create({ placeId: place.id, name: 'makis', });
             PlaceTag.create({ placeId: place.id, name: 'japonesa', });
+            Comment.create({ placeId: place.id, username: 'userone', title: 'Comment 01', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
+            Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           Place.create({ 
             name: 'Tokyo Ramen', 
@@ -57,6 +63,8 @@ module.exports = {
           }).then(place => {
             PlaceTag.create({ placeId: place.id, name: 'restaurante', });
             PlaceTag.create({ placeId: place.id, name: 'pizza', });
+            Comment.create({ placeId: place.id, username: 'userone', title: 'Comment 01', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
+            Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           Place.create({ 
             name: 'Mister Lemon', 
@@ -77,6 +85,8 @@ module.exports = {
           }).then(place => {
             PlaceTag.create({ placeId: place.id, name: 'restaurante', });
             PlaceTag.create({ placeId: place.id, name: 'pizza', });
+            Comment.create({ placeId: place.id, username: 'userone', title: 'Comment 01', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
+            Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           Place.create({ 
             name: 'LongHorn', 
@@ -98,6 +108,8 @@ module.exports = {
             PlaceTag.create({ placeId: place.id, name: 'bar', });
             PlaceTag.create({ placeId: place.id, name: 'disco', });
             PlaceTag.create({ placeId: place.id, name: 'beer', });
+            Comment.create({ placeId: place.id, username: 'userone', title: 'Comment 01', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
+            Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           
           Tag.sync({ force: true }).then(() => {

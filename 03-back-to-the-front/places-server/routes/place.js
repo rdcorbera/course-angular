@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Place = require('../models/place');
 const PlaceTag = require('../models/place-tag');
+const Comment = require('../models/comment');
 
 router.get('/', (req, res, next) => {
   Place.findAll({
@@ -18,7 +19,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id/details', (req, res, next) => {
   const placeId = req.params.id;
 
   Place.findOne({
@@ -26,6 +27,9 @@ router.get('/:id', (req, res, next) => {
       model: PlaceTag,
       as: 'categories',
       attributes: ['name']
+    }, {
+      model: Comment,
+      as: 'comments'
     }],
     where: {
       id: placeId
