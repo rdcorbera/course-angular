@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private placeService: PlaceService) { }
 
   ngOnInit() {
-    this.placesByDay = this.placeService.listPopularByDay();
-    this.placesByWeek = this.placeService.listPopularByWeek();
+    this.placeService.listPopularByDay().subscribe(list => this.placesByDay = list);
+    this.placeService.listPopularByWeek().subscribe(list => this.placesByWeek = list);
   }
 }

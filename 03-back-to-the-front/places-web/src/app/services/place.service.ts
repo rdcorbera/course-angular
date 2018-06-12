@@ -1,37 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models/place';
-import { Comment } from '../models/comment';
+
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PlaceService {
 
   private places: Place[];
 
-  constructor() {
-    this.places = [];
-    this.places.push(new Place(
-      1, 'Mc Donalds', 'Fast food restaurante', ['resturante', 'hamburguers'], 'Avenue One Two Three', -12.00, -12.00, [
-        new Comment('userone', 'Low prices', 'This week all the products has fitty percent of discount', new Date())
-      ])
-    );
-    this.places.push(new Place(
-      2, 'LongHorn', 'Grill, Pastas and Drinks', ['resturante', 'drinks'], 'Avenue One Two Three', -12.00, -12.00, [
-        new Comment('userone', 'Low prices', 'This week all the products has fitty percent of discount', new Date())
-      ])
-    );
-    this.places.push(new Place(
-      3, 'TGI Fridays', 'Fast food restaurante', ['drinks'], 'Avenue One Two Three', -12.00, -12.00, [
-        new Comment('userone', 'Low prices', 'This week all the products has fitty percent of discount', new Date())
-      ])
-    );
+  constructor(private http: HttpClient) { }
+
+  public listPopularByDay(): Observable<Place[]> {
+    return this.http.get<Place[]>(environment.apiUrl + 'places/popular-day');
   }
 
-  public listPopularByDay(): Place[] {
-    return this.places;
-  }
-
-  public listPopularByWeek(): Place[] {
-    return this.places;
+  public listPopularByWeek(): Observable<Place[]> {
+    return this.http.get<Place[]>(environment.apiUrl + 'places/popular-week');
   }
 
   public listByCategory(category: string) {
