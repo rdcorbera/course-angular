@@ -18,6 +18,23 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/:id', (req, res, next) => {
+  const placeId = req.params.id;
+
+  Place.findOne({
+    include: [{
+      model: PlaceTag,
+      as: 'categories',
+      attributes: ['name']
+    }],
+    where: {
+      id: placeId
+    }
+  }).then(places => {
+    res.json(places);
+  });
+});
+
 router.post('/search', (req, res, next) => {
   const searchParams = req.body;
 
