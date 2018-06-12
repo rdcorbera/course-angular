@@ -1,0 +1,16 @@
+{
+  "name": "places-api-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "DATABASE_URL='sqlite:places.db' node app.js"
+  },
+  "author": "Ricardo Corbera",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "sequelize": "^4.37.7",
+    "sqlite3": "^4.0.0"
+  }
+}
