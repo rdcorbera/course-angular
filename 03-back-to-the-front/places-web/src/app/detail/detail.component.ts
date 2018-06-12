@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const placeId = Number.parseInt(params.get('id'));
-      this.place = this.placeService.getById(placeId);
+      this.placeService.getById(placeId).subscribe(place => this.place = place);
     });
   }
 }

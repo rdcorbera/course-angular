@@ -3,6 +3,6 @@ export class Comment {
     public username: string,
     public title: string,
     public content: string,
-    public registerAt: Date
+    public createdAt: Date
   ) {}
 }

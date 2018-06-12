@@ -24,7 +24,7 @@ export class PlaceService {
     return this.places;
   }
 
-  public getById(id: number): Place {
-    return this.places.find(place => place.id === id);
+  public getById(id: number): Observable<Place> {
+    return this.http.get<Place>(environment.apiUrl + 'places/' + id + '/details');
   }
 }
