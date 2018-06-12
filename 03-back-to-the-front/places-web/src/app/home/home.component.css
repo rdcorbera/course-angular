@@ -1,0 +1,14 @@
+.home-container {
+  padding-bottom: 15px;
+}
+
+@media only screen and (min-width : 1272px) {
+  .home-container  {
+    width: 1248px;
+    margin: 0 auto;
+  }
+}
+
+.home-container h4 {
+  margin: 20px 0;
+}
