@@ -1,7 +1,7 @@
 import { Person } from './person';
 import { Snake } from './snake';
 import { CustomNumber, StringNumber } from './generic-number';
-import { Developer } from './decorators/classdecorator';
+import { Developer } from './decorators/class-sample';
 
 const person = new Person(12345678, 'Mike', 28);
 person.sayHello();
