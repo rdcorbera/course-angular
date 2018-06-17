@@ -39,8 +39,8 @@ router.get('/:id/details', (req, res, next) => {
   });
 });
 
-router.post('/search', (req, res, next) => {
-  const searchParams = req.body;
+router.get('/search', (req, res, next) => {
+  const category = req.query.category;
 
   Place.findAll({
     include: [{
@@ -50,7 +50,7 @@ router.post('/search', (req, res, next) => {
     }],
     where: {
       '$categories.name$': {
-        [Op.like]: '%' + searchParams.category + '%'
+        [Op.like]: '%' + category + '%'
       }
     },
     order: [['name', 'ASC']]
