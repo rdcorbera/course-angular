@@ -8,6 +8,7 @@ const database = require('./database');
 database.init();
 
 const index = require('./routes/index');
+const user = require('./routes/user');
 const places = require('./routes/place');
 const tags = require('./routes/tag');
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/', index);
+app.use('/v1/user', user);
 app.use('/v1/places', places);
 app.use('/v1/tags', tags);
 

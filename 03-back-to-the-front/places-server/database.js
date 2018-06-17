@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL);
 
+const User = require('./models/user');
+const Profile = require('./models/profile');
 const Place = require('./models/place');
 const Tag = require('./models/tag');
 const PlaceTag = require('./models/place-tag');
@@ -14,6 +16,8 @@ module.exports = {
         console.log('Connection has been established successfully.');
 
         Promise.all([
+          User.sync({ force: true }),
+          Profile.sync({ force: true }),
           Place.sync({ force: true }),
           Tag.sync({ force: true }),
           PlaceTag.sync({ force: true }),
@@ -112,16 +116,24 @@ module.exports = {
             Comment.create({ placeId: place.id, username: 'userotwo', title: 'Comment 02', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' });
           });
           
-          Tag.sync({ force: true }).then(() => {
-            Tag.create({ name: 'restaurante' });
-            Tag.create({ name: 'disco' });
-            Tag.create({ name: 'bar' });
-            Tag.create({ name: 'beer' });
-            Tag.create({ name: 'pizza' });
-            Tag.create({ name: 'pasta' });
-            Tag.create({ name: 'seafood' });
-            Tag.create({ name: 'ramen' });
-          });
+          Tag.create({ name: 'restaurante' });
+          Tag.create({ name: 'disco' });
+          Tag.create({ name: 'bar' });
+          Tag.create({ name: 'beer' });
+          Tag.create({ name: 'pizza' });
+          Tag.create({ name: 'pasta' });
+          Tag.create({ name: 'seafood' });
+          Tag.create({ name: 'ramen' });
+
+          User.create({ username: 'admin', password: 'admin' }).then(usr => Profile.create({ 
+            rol: 'admin', firstname: 'admin', lastname: 'admin', email: 'admin@domain.com', userId: usr.id
+          }));
+          User.create({ username: 'userone', password: 'userone' }).then(usr => Profile.create({ 
+            rol: 'customer', firstname: 'Jhon', lastname: 'Doe', email: 'john.doe@gmail.com', userId: usr.id
+          }));
+          User.create({ username: 'usertwo', password: 'usertwo' }).then(usr => Profile.create({ 
+            rol: 'customer', firstname: 'Jane', lastname: 'Doe', email: 'jane.doe@gmail.com', userId: usr.id
+          }));
         });
       },(err) => {
         console.log('Unable to connect to the database:', err);
