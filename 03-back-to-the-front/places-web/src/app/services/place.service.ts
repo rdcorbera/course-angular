@@ -8,8 +8,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PlaceService {
 
-  private places: Place[];
-
   constructor(private http: HttpClient) { }
 
   public listPopularByDay(): Observable<Place[]> {
@@ -20,8 +18,8 @@ export class PlaceService {
     return this.http.get<Place[]>(environment.apiUrl + 'places/popular-week');
   }
 
-  public listByCategory(category: string) {
-    return this.places;
+  public listByCategory(category: string): Observable<Place[]> {
+    return this.http.get<Place[]>(environment.apiUrl + 'places/search?category=' + category);
   }
 
   public getById(id: number): Observable<Place> {

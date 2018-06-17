@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PlaceService } from './services/place.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  query: string;
+
   constructor(private router: Router) {}
 
-  go(url: string): void {
-    this.router.navigate(['/' + url]);
+  search(): void {
+    this.router.navigate(['/search', this.query]);
   }
 }
