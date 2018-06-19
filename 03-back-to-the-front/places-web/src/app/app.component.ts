@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlaceService } from './services/place.service';
+import { Profile } from './models/profile';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  profile: Profile;
   query: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.profile = this.userService.getProfile();
+  }
 
   search(): void {
     this.router.navigate(['/search', this.query]);
+  }
+
+  logout(): void {
+    this.userService.logout();
+    this.router.navigate(['/home']);
   }
 }

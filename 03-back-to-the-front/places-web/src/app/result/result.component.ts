@@ -12,7 +12,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ResultComponent implements OnInit {
 
-  currentMap: any;
+  private currentMap: any;
+  private markers: google.maps.Marker[] = [];
+
   places: Place[];
 
   constructor(private router: ActivatedRoute, private placeService: PlaceService) { }
@@ -23,6 +25,7 @@ export class ResultComponent implements OnInit {
     this.router.paramMap.subscribe((params: ParamMap) => {
       const query = params.get('query');
       this.placeService.listByCategory(query).subscribe(list => {
+        this.clearMarkers();
         this.loadPlaces(list);
       });
     });
@@ -33,6 +36,14 @@ export class ResultComponent implements OnInit {
       center: { lat: -12.075, lng: -77.043 },
       zoom: 15
     });
+  }
+
+  private clearMarkers(): void {
+    if (this.currentMap == null) return;
+
+    for (const marker of this.markers) {
+      marker.setMap(null);
+    }
   }
 
   private loadPlaces(places: Place[]): void {
@@ -51,6 +62,8 @@ export class ResultComponent implements OnInit {
       marker.addListener('click', () => {
         infowindow.open(this.currentMap, marker);
       });
+
+      this.markers.push(marker);
     }
   }
 }
