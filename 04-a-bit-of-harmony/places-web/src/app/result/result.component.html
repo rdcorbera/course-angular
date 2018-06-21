@@ -1,0 +1,14 @@
+<div class="row">
+  <div id="map" class="col-8"></div>
+  <div id="details" class="col">
+    <div *ngFor="let place of places" class="card" style="width: 100%; margin-bottom: 15px;">
+      <div class="card-body">
+        <h5 class="card-title">{{place.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{place.address}}</h6>
+        <p class="card-text">{{place.description}}</p>
+        <a href="#" class="card-link" [routerLink]="['/detail', place.id]">Details</a>
+        <a href="#" class="card-link">Reserve</a>
+      </div>
+    </div>
+  </div>
+</div>

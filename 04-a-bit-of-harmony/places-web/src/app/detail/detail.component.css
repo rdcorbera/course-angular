@@ -1,0 +1,19 @@
+.detail-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+@media only screen and (min-width : 1272px) {
+  .detail-container  {
+    width: 1248px;
+    margin: 0 auto;
+  }
+}
+
+.detail-container .title {
+  margin: 20px 0;
+}
+
+.detail-container .comment {
+  margin-bottom: 10px;
+}
