@@ -22,4 +22,20 @@ router.post('/login', (req, res, next) => {
   });
 });
 
+router.put('/profile', (req, res, next) => {
+  const profile = req.body;
+
+  Profile.update({
+    firstname: profile.firstname,
+    lastname: profile.lastname,
+    email: profile.email,
+    dateOfBirth: profile.dateOfBirth,
+    biography: profile.biography,
+    facebookLink: profile.facebookLink,
+    twitterLink: profile.twitterLink
+  },{ where: { id: profile.id }}).then(result => {
+    Profile.findOne({ where: { id: profile.id }}).then(prfl => res.json(prfl));
+  });
+});
+
 module.exports = router;
