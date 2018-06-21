@@ -1,5 +1,6 @@
 export class Profile {
   constructor(
+    public id: number,
     public rol: string,
     public firstname: string,
     public lastname: string,

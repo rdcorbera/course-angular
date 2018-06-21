@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Profile } from '../models/profile';
 import { Router } from '@angular/router';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   user: User;
   errorMessage: string;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private profileService: ProfileService) {
     this.user = new User('', '', false);
   }
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.userService.login(this.user).subscribe(
       (profile: Profile) => {
-        this.userService.setProfile(profile);
+        this.profileService.setProfile(profile);
         // Handler with a Subject: Lesson 06
         this.router.navigate(['/']).then(() => document.location.reload(true));
       },
