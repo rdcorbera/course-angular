@@ -5,6 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/places', pathMatch: 'full' },
   { path: 'places', loadChildren: 'app/place/place.module#PlaceModule' },
   { path: 'account', loadChildren: 'app/account/account.module#AccountModule' },
+  { path: '**', redirectTo: '/places' }
 ];
 
 @NgModule({
