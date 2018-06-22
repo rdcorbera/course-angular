@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { CoreModule } from './core/core.module';
+import { SecurityModule } from './security/security.module';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    CoreModule,
+    SecurityModule,
     AppRoutingModule
   ],
   bootstrap: [AppComponent]

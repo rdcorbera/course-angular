@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       firstname: [this.profile.firstname, Validators.required],
       lastname: [this.profile.lastname, Validators.required],
       email: [this.profile.email, Validators.required],
-      dateOfBirth: this.profile.dateOfBirth.toString().substring(0, 10),
+      dateOfBirth: this.profile.dateOfBirth ? this.profile.dateOfBirth.toString().substring(0, 10) : '',
       biography: this.profile.biography,
       facebookLink: this.profile.facebookLink,
       twitterLink: this.profile.twitterLink
