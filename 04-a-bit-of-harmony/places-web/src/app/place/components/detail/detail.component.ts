@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Place } from '../models/place';
-import { PlaceService } from '../services/place.service';
+import { Place } from '../../models/place';
+import { PlaceService } from '../../services/place.service';
 
 @Component({
   selector: 'app-detail',

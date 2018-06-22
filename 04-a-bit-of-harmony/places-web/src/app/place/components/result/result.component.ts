@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { } from '@types/googlemaps';
-import { Place } from '../models/place';
-import { PlaceService } from '../services/place.service';
+import { Place } from '../../models/place';
+import { PlaceService } from '../../services/place.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
-import { UserService } from '../services/user.service';
+import { User } from '../../../security/models/user';
+import { UserService } from '../../../security/services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Profile } from '../models/profile';
+import { Profile } from '../../../security/models/profile';
 import { Router } from '@angular/router';
-import { ProfileService } from '../services/profile.service';
+import { ProfileService } from '../../../security/services/profile.service';
 
 @Component({
   selector: 'app-login',

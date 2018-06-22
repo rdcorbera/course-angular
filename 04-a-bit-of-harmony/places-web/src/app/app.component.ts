@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile } from './models/profile';
-import { UserService } from './services/user.service';
-import { ProfileService } from './services/profile.service';
+
+import { Profile } from './security/models/profile';
+
+import { UserService } from './security/services/user.service';
+import { ProfileService } from './security/services/profile.service';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +23,11 @@ export class AppComponent implements OnInit {
   }
 
   search(): void {
-    this.router.navigate(['/search', this.query]);
+    this.router.navigate(['/places/search', this.query]);
   }
 
   logout(): void {
     this.userService.logout();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/places']);
   }
 }

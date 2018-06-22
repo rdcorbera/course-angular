@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark justify-content-between">
-      <a class="navbar-brand" href="#" routerLink="/home">places.com</a>
+      <a class="navbar-brand" href="#" routerLink="/places">places.com</a>
       <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -15,14 +15,14 @@
             <a class="nav-link" href="#">Reservations</a>
           </li>
           <li *ngIf="!profile" class="nav-item">
-            <a class="nav-link" href="#" routerLink="/login">Login</a>
+            <a class="nav-link" href="#" routerLink="/account/login">Login</a>
           </li>
           <li *ngIf="profile" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Hi <strong>{{profile.firstname}}</strong>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-              <a class="dropdown-item" href="#" routerLink="/profile">Profile</a>
+              <a class="dropdown-item" href="#" routerLink="/account/profile">Profile</a>
               <a class="dropdown-item" href="#">Settings</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
