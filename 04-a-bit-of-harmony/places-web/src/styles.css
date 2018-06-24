@@ -12,3 +12,20 @@ body {
 .container-fluid {
   height: 100%;
 }
+
+
+/* Forms Container */
+
+.form-container {
+  padding-top: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-container .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948;
+}
+
+.form-container .ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}
