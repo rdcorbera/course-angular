@@ -11,6 +11,14 @@
           <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()">Search</button>
         </form>
         <ul class="navbar-nav">
+          <li appAdminOnly class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              Manage
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" routerLink="/places/new">New Place</a>
+            </div>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Reservations</a>
           </li>

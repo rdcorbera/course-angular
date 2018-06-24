@@ -30,4 +30,10 @@ export class ProfileService {
   public update(profile: Profile): Observable<Profile> {
     return this.http.put<Profile>(environment.apiUrl + 'user/profile', profile);
   }
+
+  public isAdmin(): boolean {
+    if (!this.profile) this.getProfile();
+
+    return this.profile != null && this.profile.rol === 'admin';
+  }
 }
