@@ -1,0 +1,18 @@
+.login-container {
+  padding-top: 30px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.login-container button[type="submit"] {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.login-container .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948;
+}
+
+.login-container .ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}

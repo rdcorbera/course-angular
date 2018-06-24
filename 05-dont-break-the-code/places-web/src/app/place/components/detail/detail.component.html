@@ -1,0 +1,26 @@
+<div *ngIf="place" class="detail-container">
+  <div class="row">
+    <div class="col-lg-8">
+      <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+    </div>
+    <div class="col-lg-4">
+      <h1>{{place.name}}</h1>
+      <p>{{place.address}}</p>
+      <p>
+        {{place.description}}
+      </p>
+    </div>
+  </div>
+  <h3 class="title">Comments</h3>
+  <div *ngFor="let comment of place.comments" class="card comment">
+    <div class="card-header">
+      {{comment.title}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{comment.content}}</p>
+        <footer class="blockquote-footer">{{comment.username}} at {{comment.createdAt | date}}</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
