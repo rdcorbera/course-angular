@@ -7,17 +7,18 @@ import { Profile } from '../models/profile';
 @Injectable()
 export class ProfileService {
 
+  private PROFILE_KEY = 'profile';
   private profile: Profile;
 
   constructor(private http: HttpClient) { }
 
   public setProfile(prfl: Profile): void {
-    localStorage.setItem('profile', JSON.stringify(prfl));
+    localStorage.setItem(this.PROFILE_KEY, JSON.stringify(prfl));
     this.profile = prfl;
   }
 
   public getProfile(): Profile {
-    const prfl = JSON.parse(localStorage.getItem('profile'));
+    const prfl = JSON.parse(localStorage.getItem(this.PROFILE_KEY));
     this.profile = prfl;
     return this.profile;
   }
