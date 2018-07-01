@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   user: User;
   errorMessage: string;
 
-  constructor(private router: Router, private userService: UserService, private profileService: ProfileService) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private profileService: ProfileService,
+  ) {
     this.user = new User('', '', false);
   }
 
@@ -24,21 +28,22 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    console.log(this.user.username);
     this.userService.login(this.user).subscribe(
       (profile: Profile) => {
+        console.log('success');
         this.profileService.setProfile(profile);
         // Handler with a Subject: Lesson 06
         this.router.navigate(['/']).then(() => document.location.reload(true));
       },
-      this.loginError
+      (error: HttpErrorResponse) => {
+        console.log('failed');
+        if (error.status === 404) {
+          this.errorMessage = 'Invalid username or password';
+        } else {
+          this.errorMessage = 'Server side error';
+        }
+      }
     );
-  }
-
-  private loginError(error: HttpErrorResponse): void {
-    if (error.status === 404) {
-      this.errorMessage = 'Invalid username or password';
-    } else {
-      this.errorMessage = 'Server side error';
-    }
   }
 }

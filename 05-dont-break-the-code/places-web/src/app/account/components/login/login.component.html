@@ -1,9 +1,9 @@
 <div class="login-container">
   <h4>Please sign in</h4>
-  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+  <div *ngIf="errorMessage" class="alert alert-danger">
     {{errorMessage}}
   </div>
-  <form (submit)="login()" #loginForm="ngForm">
+  <form id="loginForm" (submit)="login()" #loginForm="ngForm">
     <div class="form-group">
       <label for="username">User name</label>
       <input 
